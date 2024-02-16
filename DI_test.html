@@ -16,38 +16,56 @@
 </head>
 
 <body>
+    藥品代碼： <input type="text" name="" id="inValue" width="100px" height="50px">
+    <input type="submit" value="確定" id="confirm" height="55px">
+    <p id="inputShow"></p>
     <main>
         <h2>商品名稱：</h2>
         <div data-set="name" style="text-align: left;
-        font-size: 24px; color: blue; font-weight: bolder;">          
-        </div>
+        font-size: 20px; color: blue; font-weight: bolder;">          
+        </div><hr>
 
         <h2>腎功能不良劑量：</h2>
         <div data-set="renal" style="text-align: left;
-        font-size: 24px; color: blue; font-weight: bolder;">          
-        </div>
+        font-size: 20x; color: blue; font-weight: bolder;">          
+        </div><hr>
 
         <h2>小兒建議劑量：</h2>
         <div data-set="pediatric" style="text-align: left;
-        font-size: 24px; color: blue; font-weight: bolder;">          
-        </div>
+        font-size: 20px; color: blue; font-weight: bolder;">          
+        </div><hr>
 
         <h2>老人建議劑量：</h2>
         <div data-set="eldly" style="text-align: left;
-        font-size: 24px; color: blue; font-weight: bolder;">          
-        </div>
+        font-size: 20px; color: blue; font-weight: bolder;">          
+        </div><hr>
 
         <h2>提示內容：</h2>
         <div data-set="hint" style="text-align: left;
-        font-size: 24px; color: blue; font-weight: bolder;">          
+        font-size: 20px; color: blue; font-weight: bolder;">          
         </div>
     </main>
 
     <script>
         $(document).ready(()=>{
-            $.getJSON("drugs.json", (data)=>{
+            $("#confirm").click(()=> {
+                let valuex = $("#inValue").val().toUpperCase();
+                    $.getJSON("drugs.json", (data)=>{
+                        if(valuex in data){
+                            alert(valuex)
+                        }else{
+                            $('[data-set="name"]').html(`${valuex}: 藥品代碼不存在`)
+                        };                    
+                    });
+
                 $('[data-set="name"]').html(data["VIA03O"].商品名稱);
                 $('[data-set="renal"]').html(data["VIA03O"].腎功能不良劑量調整);
+                $('[data-set="pediatric"]').html(data["VIA03O"].小兒建議劑量);
+                $('[data-set="pediatric"]').mousemove(()=> {
+                    $('[data-set="pediatric"]').slideUp();
+                });
+                $('[data-set="hint"]').html(data["VIA03O"].提示內容);
+                
             });
         });    
     </script>   
