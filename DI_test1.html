@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <span style="font-size: 28px; color: blue;">藥品代碼： </span><input type="text" name="" id="inValue" width="100px" height="50px">
+    藥品代碼： <input type="text" name="" id="inValue" width="100px" height="50px">
     <input type="submit" value="確定" id="confirm" height="55px">
     <p id="inputShow"></p>
     <main>
@@ -51,16 +51,12 @@
             $("#confirm").click(()=> {
                 let valuex = $("#inValue").val().toUpperCase();
                     $.getJSON("drugs.json", (data)=>{
-                        if(valuex.length !== 6){
-                            $('[data-set="name"]').html(`${valuex} 非6個位數`);
-                            $('[data-set="renal"], [data-set="pediatric"]').empty();
-                        }else if(valuex in data){
-                            $('[data-set="name"]').html(data[valuex].商品名稱);                                                      
+                        if(valuex in data){
+                            $('[data-set="name"]').html(data[valuex].商品名稱);                            
                             $('[data-set="renal"]').html(data[valuex].腎功能不良劑量調整);
                             $('[data-set="pediatric"]').html(data[valuex].小兒建議劑量);
                         }else{
-                            $('[data-set="name"]').html(`${valuex} 藥品代碼不存在`);
-                            $('[data-set="renal"], [data-set="pediatric"]').empty();
+                            $('[data-set="name"]').html(`${valuex} 藥品代碼不存在`)
                         };                    
                     });                
                 
