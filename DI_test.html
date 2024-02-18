@@ -9,40 +9,37 @@
         crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="pratics.css">
+    <link rel="stylesheet" href="di.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Noto+Serif+TC&display=swap" rel="stylesheet">
-    <title>Drug Informations</title>
+    <title>線上處方評估輔助器</title>
 </head>
 
 <body>
-    <span style="font-size: 28px; color: blue;">藥品代碼： </span><input type="text" name="" id="inValue" width="100px" height="50px">
-    <input type="submit" value="確定" id="confirm" height="55px">
+    <span id="drugtitle">藥品代碼： </span>
+    <input type="text" name="" id="inValue">
+    <input type="submit" value="確定" id="confirm">
     <p id="inputShow"></p>
+    <h5>資料更新：2024/02/15（不定期更新）</h5>
     <main>
         <h2>商品名稱：</h2>
-        <div data-set="name" style="text-align: left;
-        font-size: 20px; color: blue; font-weight: bolder;">          
+        <div class="section-trade" data-set="name">          
         </div><hr>
 
         <h2>腎功能不良劑量：</h2>
-        <div data-set="renal" style="text-align: left;
-        font-size: 20x; color: blue; font-weight: bolder;">          
+        <div class="section-title" data-set="renal">          
         </div><hr>
 
-        <h2>小兒建議劑量：</h2>
-        <div data-set="pediatric" style="text-align: left;
-        font-size: 20px; color: blue; font-weight: bolder;">          
+        <h2 id="ped">小兒建議劑量：</h2>
+        <div class="sectionVtitle" data-set="pediatric">          
         </div><hr>
 
-        <h2>老人建議劑量：</h2>
-        <div data-set="eldly" style="text-align: left;
-        font-size: 20px; color: blue; font-weight: bolder;">          
+        <h2 id="eld">老人建議劑量：</h2>
+        <div class="sectionVtitle" data-set="eldly" style="color: darkblue; font-size: 18px;">                  
         </div><hr>
 
-        <h2>提示內容：</h2>
-        <div data-set="hint" style="text-align: left;
-        font-size: 20px; color: blue; font-weight: bolder;">          
+        <h2 id="ana">提示內容：</h2>
+        <div class="sectionVtitle" data-set="hint">          
         </div>
     </main>
 
@@ -50,27 +47,33 @@
         $(document).ready(()=>{
             $("#confirm").click(()=> {
                 let valuex = $("#inValue").val().toUpperCase();
+                $("#inValue").val("");
                     $.getJSON("drugs.json", (data)=>{
                         if(valuex.length !== 6){
                             $('[data-set="name"]').html(`${valuex} 非6個位數`);
-                            $('[data-set="renal"], [data-set="pediatric"]').empty();
+                            $('.sectionVtitle,.section-title').empty();
                         }else if(valuex in data){
                             $('[data-set="name"]').html(data[valuex].商品名稱);                                                      
                             $('[data-set="renal"]').html(data[valuex].腎功能不良劑量調整);
                             $('[data-set="pediatric"]').html(data[valuex].小兒建議劑量);
+                            $('[data-set="eldly"]').html("資料整理中");
+                            $('[data-set="hint"]').html(data[valuex].提示內容);
+                            $('.sectionVtitle').hide()
+                            $('[data-set="eldly"]').show()
                         }else{
                             $('[data-set="name"]').html(`${valuex} 藥品代碼不存在`);
-                            $('[data-set="renal"], [data-set="pediatric"]').empty();
-                        };                    
-                    });                
-                
-                $('[data-set="pediatric"]').mousemove(()=> {
-                    $('[data-set="pediatric"]').slideUp();
-                });
-                $('[data-set="hint"]').html(data["VIA03O"].提示內容);
-                
+                            $('.sectionVtitle,.section-title').empty();
+                        };
+                        $('#ped').mousemove(()=>{
+                            $('[data-set="pediatric"]').slideDown();
+                        });
+                        $('#ana').mousemove(()=>{
+                            $('[data-set="hint"]').slideDown();
+                        });               
+                    });
             });
         });    
     </script>   
 </body>
+<footer style="font-size: 12px; color: darkblue;">ver. 1.0 Mar. 2024</footer>
 </html>
