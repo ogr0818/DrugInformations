@@ -37,11 +37,14 @@ h5{
     top: 3%;
 }
 #confirm{
-    font-size: 20px; 
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600; 
+    color: darkblue;
     margin: 2px;
     border-radius: 5px;
     background-color: bisque; 
-    width: 64px;
+    width: 60px;
     height: 34px;
 }
 footer{
