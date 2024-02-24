@@ -1,3 +1,0 @@
-# DrugInformations
-# DrugInformations
-# DrugInformations
