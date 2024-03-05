@@ -20,7 +20,7 @@
     <input type="text" name="" id="inValue">
     <input type="submit" value="確定" id="confirm">
     <p id="inputShow"></p>
-    <h5>資料更新：2024/02/24（不定期更新）</h5>
+    <h4>資料更新：2024/03/05（不定期更新）</h4>
     <main>
         <h2>商品名稱：</h2>
         <div class="section-trade" data-set="name">          
@@ -34,11 +34,11 @@
         <div class="sectionVtitle" data-set="pediatric">          
         </div><hr>
 
-        <h2 id="eld">老人建議劑量：</h2>
-        <div class="sectionVtitle" data-set="eldly" style="color: darkblue; font-size: 18px;">                  
+        <h2 id="eld">老人用藥建議：</h2>
+        <div class="sectionVtitle" data-set="eldly" style="color: darkblue;">                  
         </div><hr>
 
-        <h2 id="ana">提示內容：</h2>
+        <h2 id="ana">處方評估要點：</h2>
         <div class="sectionVtitle" data-set="hint">          
         </div>
     </main>
@@ -56,16 +56,19 @@
                             $('[data-set="name"]').html(data[valuex].商品名稱);                                                      
                             $('[data-set="renal"]').html(data[valuex].腎功能不良劑量調整);
                             $('[data-set="pediatric"]').html(data[valuex].小兒建議劑量);
-                            $('[data-set="eldly"]').html("資料整理中");
+                            $('[data-set="eldly"]').html(data[valuex].老人用藥建議);
                             $('[data-set="hint"]').html(data[valuex].提示內容);
                             $('.sectionVtitle').hide()
-                            $('[data-set="eldly"]').show()
+                            <!-- $('[data-set="eldly"]').show() -->
                         }else{
                             $('[data-set="name"]').html(`${valuex} 藥品代碼不存在`);
                             $('.sectionVtitle,.section-title').empty();
                         };
                         $('#ped').mousemove(()=>{
                             $('[data-set="pediatric"]').slideDown();
+                        });
+                        $('#eld').mousemove(()=>{
+                            $('[data-set="eldly"]').slideDown();
                         });
                         $('#ana').mousemove(()=>{
                             $('[data-set="hint"]').slideDown();
@@ -75,5 +78,5 @@
         });    
     </script>   
 </body>
-<footer style="font-size: 12px; color: darkblue;">ver. 1.0 Mar. 2024</footer>
+<footer style="font-size: 12px; color: darkblue;">ver. 1.1 Mar. 2024</footer>
 </html>

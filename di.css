@@ -6,14 +6,14 @@ h2{
     font-size: 24px;
     color: Brown;
 }
-h5{
-    color: darkblue;
+h4{
+    color: black;
     text-align: justify;
 }
 .section-trade, .section-title, .sectionVtitle{
     text-align: left;
     font-size: 20px; 
-    color: blue; 
+    color: darkblue; 
     font-weight: bolder;
 }
 #ped, #eld, #ana:hover{
