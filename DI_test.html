@@ -20,7 +20,7 @@
     <input type="text" name="" id="inValue">
     <input type="submit" value="確定" id="confirm">
     <p id="inputShow"></p>
-    <h4>資料更新：2024/03/05（不定期更新）</h4>
+    <h4>資料更新：2024/03/18（不定期更新）</h4>
     <main>
         <h2>商品名稱：</h2>
         <div class="section-trade" data-set="name">          
@@ -40,6 +40,10 @@
 
         <h2 id="ana">處方評估要點：</h2>
         <div class="sectionVtitle" data-set="hint">          
+        </div><hr>
+
+        <h2 id="ant">抗生素手冊 6e：</h2>
+        <div class="sectionVtitle" data-set="abx">          
         </div>
     </main>
 
@@ -58,6 +62,7 @@
                             $('[data-set="pediatric"]').html(data[valuex].小兒建議劑量);
                             $('[data-set="eldly"]').html(data[valuex].老人用藥建議);
                             $('[data-set="hint"]').html(data[valuex].提示內容);
+                            $('[data-set="abx"]').html(data[valuex].抗生素手冊);
                             $('.sectionVtitle').hide()
                             <!-- $('[data-set="eldly"]').show() -->
                         }else{
@@ -72,11 +77,14 @@
                         });
                         $('#ana').mousemove(()=>{
                             $('[data-set="hint"]').slideDown();
+                        });
+                        $('#ant').mousemove(()=>{
+                            $('[data-set="abx"]').slideDown();
                         });               
                     });
             });
         });    
     </script>   
 </body>
-<footer style="font-size: 12px; color: darkblue;">ver. 1.1 Mar. 2024</footer>
+<footer style="font-size: 12px; color: darkblue;">ver. 1.2 Mar. 2024</footer>
 </html>
