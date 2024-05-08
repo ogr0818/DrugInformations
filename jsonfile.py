@@ -47,8 +47,8 @@ def change (da):
 
 dfCR = change(dfC)
 dfCX = pd.merge(dfCR, dfEX, how='left', on='藥品代碼')
-dfCX.fillna("暫無資料", inplace=True)
 dfCM = pd.merge(dfCX, abx, how='left', left_on='藥品代碼', right_on='drug_id')
 dfCM.set_index("藥品代碼", inplace=True)
+dfCM.fillna("暫無資料", inplace=True)
 dfCM.drop("drug_id", axis=1, inplace=True)
 dfCM.to_json("drugs.json", orient="index", force_ascii=False)
