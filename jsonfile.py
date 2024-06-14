@@ -1,8 +1,8 @@
 import pandas as pd
 
-df = pd.read_excel("202404.xlsx")
+df = pd.read_excel("drugs202406.xlsx")
 dfA = pd.read_excel('asaysisProfile.xlsx')
-dfE = pd.read_excel("eldly.xlsx")
+dfE = pd.read_excel("eldlyD.xlsx")
 dfAbx = pd.read_excel("abx.xlsx")
 
 col = ['藥品代碼', '商品名稱', '腎功能不良劑量調整', '小兒建議劑量']
@@ -15,8 +15,8 @@ dfC["小兒建議劑量"] = dfC["小兒建議劑量"].str.replace(r'<br>\s?[(<br
 dfC["腎功能不良劑量調整"] = dfC["腎功能不良劑量調整"].str.replace(r'\n', r"<br>", regex=True)
 
 #   老年人潛在性不當用藥
-dfEX = dfE[['藥品代碼', 'Unnamed: 9']]
-dfEX.columns=['藥品代碼', '老人用藥建議']
+# dfEX = dfE[['藥品代碼', 'Unnamed: 9']]
+dfEX = dfE[['藥品代碼', '提示內容']]
 dfEX.columns=['藥品代碼', '老人用藥建議']
 dfEX["老人用藥建議"] = dfEX["老人用藥建議"].str.replace(r'\n', r"<br>", regex=True)
 
