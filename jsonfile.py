@@ -1,12 +1,13 @@
 import pandas as pd
 
-df = pd.read_excel("drugs202406.xlsx")
-dfA = pd.read_excel('asaysisProfile.xlsx')
-dfE = pd.read_excel("eldlyD.xlsx")
-dfAbx = pd.read_excel("abx.xlsx")
+df = pd.read_excel("drugs202406.xlsx")  #   基本檔
+dfA = pd.read_excel('asaysisProfile.xlsx')  #   提示內容
+dfE = pd.read_excel("eldlyD.xlsx")  #   老人
+dfAbx = pd.read_excel("abx.xlsx")   #   抗生素
 
-col = ['藥品代碼', '商品名稱', '腎功能不良劑量調整', '小兒建議劑量']
+col = ['藥品代碼', '商品名稱', '腎功能不良劑量調整', '小兒建議劑量', '頻次說明']
 dfX = df[col]
+
 #   '腎功能不良劑量調整', '小兒建議劑量', '提示內容'
 dfC = pd.merge(dfX, dfA[['藥品代碼', '提示內容']], how="left")
 dfC["提示內容"] = dfC["提示內容"].str.replace(r'\n', r"<br>", regex=True)

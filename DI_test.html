@@ -20,10 +20,14 @@
     <input type="text" name="" id="inValue">
     <input type="submit" value="確定" id="confirm">
     <p id="inputShow"></p>
-    <h4> 資料更新： June 2024 (不定期更新)</h4>
+    <h4> 資料更新： November 2024 (不定期更新)</h4>
     <main>
         <h2>商品名稱：</h2>
         <div class="section-trade" data-set="name">          
+        </div><hr>
+
+        <h2>系統設定頻次：</h2>
+        <div class="section-title" data-set="autofreq">          
         </div><hr>
 
         <h2>腎功能不良劑量：</h2>
@@ -58,6 +62,7 @@
                             $('.sectionVtitle,.section-title').empty();
                         }else if(valuex in data){
                             $('[data-set="name"]').html(data[valuex].商品名稱);                                                      
+                            $('[data-set="autofreq"]').html(data[valuex].頻次說明);                                                      
                             $('[data-set="renal"]').html(data[valuex].腎功能不良劑量調整);
                             $('[data-set="pediatric"]').html(data[valuex].小兒建議劑量);
                             $('[data-set="eldly"]').html(data[valuex].老人用藥建議);
