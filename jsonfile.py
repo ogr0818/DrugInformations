@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_excel("drugs202406.xlsx")  #   基本檔
+df = pd.read_excel("base2025.xlsx")  #   基本檔
 dfA = pd.read_excel('asaysisProfile.xlsx')  #   提示內容
 dfE = pd.read_excel("eldlyD.xlsx")  #   老人
 dfAbx = pd.read_excel("abx.xlsx")   #   抗生素
@@ -52,4 +52,4 @@ dfCM = pd.merge(dfCX, abx, how='left', left_on='藥品代碼', right_on='drug_id
 dfCM.set_index("藥品代碼", inplace=True)
 dfCM.fillna("暫無資料", inplace=True)
 dfCM.drop("drug_id", axis=1, inplace=True)
-dfCM.to_json("drugs.json", orient="index", force_ascii=False)
+dfCM.to_json("drugs_2025.json", orient="index", force_ascii=False)

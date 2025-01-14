@@ -20,7 +20,7 @@
     <input type="text" name="" id="inValue">
     <input type="submit" value="確定" id="confirm">
     <p id="inputShow"></p>
-    <h4> 資料更新： November 2024 (不定期更新)</h4>
+    <h4> 資料更新： January 2025 (不定期更新)</h4>
     <main>
         <h2>商品名稱：</h2>
         <div class="section-trade" data-set="name">          
@@ -56,7 +56,7 @@
             $("#confirm").click(()=> {
                 let valuex = $("#inValue").val().toUpperCase();
                 $("#inValue").val("");
-                    $.getJSON("drugs.json", (data)=>{
+                    $.getJSON("drugs_2025.json", (data)=>{
                         if(valuex.length !== 6){
                             $('[data-set="name"]').html(`${valuex} 非6個位數`);
                             $('.sectionVtitle,.section-title').empty();
