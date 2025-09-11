@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_excel("base2025.xlsx")  #   基本檔
+df = pd.read_excel("baseSep.xlsx")  #   基本檔
 dfA = pd.read_excel('asaysisProfile.xlsx')  #   提示內容
 dfE = pd.read_excel("eldlyD.xlsx")  #   老人
 dfAbx = pd.read_excel("abx.xlsx")   #   抗生素
