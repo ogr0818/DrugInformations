@@ -3,7 +3,7 @@ import pandas as pd
 # df = pd.read_excel("baseSep.xlsx")  #   基本檔
 df = pd.read_excel("base.xls", engine='xlrd')  #   基本檔
 dfA = pd.read_excel('asaysisProfile.xlsx')  #   提示內容
-dfE = pd.read_excel("eldlyD.xlsx")  #   老人
+dfE = pd.read_excel("eldly.xlsx")  #   老人
 dfAbx = pd.read_excel("abx.xlsx")   #   抗生素
 
 col = ['藥品代碼', '商品名稱', '腎功能不良劑量調整', '小兒建議劑量', '頻次說明']
