@@ -1,7 +1,9 @@
 import pandas as pd
+import openpyxl
 
 # df = pd.read_excel("baseSep.xlsx")  #   基本檔
-df = pd.read_excel("base.xls", engine='xlrd')  #   基本檔
+# df = pd.read_excel("base.xls", engine='xlrd')  #   基本檔
+df = pd.read_excel("base.xlsx", engine='openpyxl')  #   基本檔
 dfA = pd.read_excel('anaysisProfile.xlsx')  #   提示內容
 dfE = pd.read_excel("eldly.xlsx")  #   老人
 dfAbx = pd.read_excel("abx.xlsx")   #   抗生素
